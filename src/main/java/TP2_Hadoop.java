@@ -127,7 +127,7 @@ public class TP2_Hadoop
         }
     }
 
-    //custom reducer for task 3 : count percentage of names by gender w/ global variables because why not
+    //custom reducer for task 3 : count percentage of names by gender
     public static int gender1, gender2, cpt=1, total;
     public static int gender1percent, gender2percent;
     public static String gender1str, gender2str;
@@ -144,7 +144,7 @@ public class TP2_Hadoop
             }
             result.set(sum);
 
-            //set global variables with keys and values
+            //set variables with keys and values
             if(TP2_Hadoop.cpt==1)
             {
                 TP2_Hadoop.gender1 = sum;
