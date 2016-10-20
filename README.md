@@ -15,12 +15,12 @@ The third task (count percentage of names by gender) uses the "customMapper3" ma
 
 The commands I used to execute each task on the cluster are:
 
-For task 1
+For task 1:
 	hadoop jar TP2_Hadoop.jar TP2_Hadoop /res/prenoms.csv /user/gkleitz/task1
 	
-For task 2
+For task 2:
 	hadoop jar TP2_Hadoop.jar task2 /res/prenoms.csv /user/gkleitz/task2
 	
-For task 3
+For task 3:
 	hadoop jar TP2_Hadoop.jar task3 /res/prenoms.csv /user/gkleitz/task3
 	
