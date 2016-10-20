@@ -12,9 +12,8 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 
-public class TP2_Hadoop
+public class Task2
 {
-    //default mapper
     public static class defaultMapper
             extends Mapper<Object, Text, Text, IntWritable>{
 
@@ -26,30 +25,6 @@ public class TP2_Hadoop
             StringTokenizer itr = new StringTokenizer(value.toString());
             while (itr.hasMoreTokens()) {
                 word.set(itr.nextToken());
-                context.write(word, one);
-            }
-        }
-    }
-
-    //task 1 : count number of names by origin
-    public static class customMapper1
-            extends Mapper<Object, Text, Text, IntWritable>{
-
-        private final static IntWritable one = new IntWritable(1);
-        private Text word = new Text();
-
-        public void map(Object key, Text value, Context context) throws IOException, InterruptedException
-        {
-            //get row
-            String myRow = new String(value.toString());
-            //get cols
-            String[] tab = myRow.split(";");
-            //get several origins
-            String[] tab2 = tab[2].replaceAll(", ",",").split(",");
-            //send each origin
-            for(String myWord : tab2)
-            {
-                word.set(myWord);
                 context.write(word, one);
             }
         }
@@ -102,11 +77,11 @@ public class TP2_Hadoop
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-        Job job = Job.getInstance(conf, "Task1 : number of names by origin");
-        job.setJarByClass(TP2_Hadoop.class);
+        Job job = Job.getInstance(conf, "Task2 : Number of names by number of origins");
+        job.setJarByClass(Task2.class);
 
         //mapper name here
-        job.setMapperClass(customMapper1.class);
+        job.setMapperClass(customMapper2.class);
 
         //combiner name here
         job.setCombinerClass(defaultReducer.class);
